@@ -1,0 +1,14 @@
+h1 Articles
+| Our blog has #{Article.public_count} articles and counting!
+
+
+table
+  tr
+    th id
+    th title
+    th body
+    - @articles.each do |article|
+      tr
+        td= link_to article.id, article
+        td= article.title
+        td= article.body

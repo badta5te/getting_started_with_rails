@@ -1,0 +1,21 @@
+= link_to "All articles", articles_path
+
+h1
+  = @article.title
+
+p
+  = @article.body
+
+ul
+  li= link_to "Edit", edit_article_path(@article)
+  li= link_to "Destroy", article_path(@article),
+                  method: :delete,
+                  data: { confirm: "Are you sure?"}
+
+h2
+  Comments
+  = render @article.comments
+
+h2
+  Add a comment:
+  = render 'comments/form'
