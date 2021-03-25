@@ -1,21 +1,23 @@
-= link_to "All articles", articles_path
+.container
+  h1
+    = @article.title
 
-h1
-  = @article.title
+  p
+    = @article.body
 
-p
-  = @article.body
+  ul
+    li= link_to "Edit", edit_article_path(@article)
+    li= link_to "Destroy", article_path(@article),
+                    method: :delete,
+                    data: { confirm: "Are you sure?"}
 
-ul
-  li= link_to "Edit", edit_article_path(@article)
-  li= link_to "Destroy", article_path(@article),
-                  method: :delete,
-                  data: { confirm: "Are you sure?"}
+  .container
+    .card
+      .card-body
+        p
+          | Comments:
+          == render @article.comments
 
-h2
-  Comments
-  = render @article.comments
-
-h2
-  Add a comment:
-  = render 'comments/form'
+        p
+          | Add a comment:
+          == render 'comments/form'
