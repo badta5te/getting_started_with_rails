@@ -1,14 +1,14 @@
-h1 Articles
-| Our blog has #{Article.public_count} articles and counting!
+.container
+  h1 Articles
+  p 
+   | Our blog has #{Article.public_count} articles and counting!
 
-
-table
-  tr
-    th id
-    th title
-    th body
-    - @articles.each do |article|
-      tr
-        td= link_to article.id, article
-        td= article.title
-        td= article.body
+.container
+  .row
+    .col-lg-9
+      - @articles.each do |article|
+        .card.mb-3
+          .card-body
+            h5.card-title
+              = link_to article.title, article, class: 'stretched-link'
+            .card-text= article.body
